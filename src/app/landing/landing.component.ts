@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule, FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import emailjs, { type EmailJSResponseStatus } from '@emailjs/browser';
@@ -15,7 +15,7 @@ export class LandingComponent {
   form: FormGroup;
   loading: boolean = false;
 
-  constructor(private fb: FormBuilder, private toastr: ToastrService) {
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private route: Router) {
     this.form = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
@@ -43,15 +43,17 @@ export class LandingComponent {
       .then(
         () => {
           this.loading = false;
-          this.form.reset();
 
-          this.toastr.error('You have just been PHISHED, sikes!!!', 'Phishing Alert', {
-            timeOut: 10000,
-            positionClass: 'toast-center-center',
+          const email = this.form.get('email')?.value;
+          this.toastr.success('Redirecting...', 'Success', {
+            timeOut: 2000,
+            positionClass: 'toast-top-right',
             progressBar: true,
-          })
-          document.body.style.transition = 'opacity 10s';
-          document.body.style.opacity = '0';
+          });
+          setTimeout(() => {
+          this.route.navigate(['/learn'], { queryParams: { email } });
+          }, 2000);
+
         },
         (error) => {
           this.loading = false;
