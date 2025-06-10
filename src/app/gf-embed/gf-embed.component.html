@@ -1,28 +1,10 @@
-<main class="flex w-full">
-    <ul class="grid grid-flow-row lg:grid-cols-2 grid-rows-1 h-full w-full" style="background-color: rgb(26, 24, 62);">
-        <li class="hidden lg:flex flex-col h-full text-white place-content-center">
-            <section class="flex flex-col gap-2 px-24 py-10 items-center relative overflow-hidden">
-                <img alt="bg image" loading="eager" decoding="async" data-nimg="fill" class="absolute inset-4 object-contain" sizes="100vw" src="Group 96.webp" style="position: absolute; height: 100%; width: 100%; inset: 0px; color: transparent;">
-                <img alt="Company Logo" loading="lazy" width="100" height="100" decoding="async" data-nimg="1" class="h-20 w-auto" src="logo.avif" style="color: transparent;">
-                <p class="text-center text-xl">Helping forward-thinking companies build <br> top-level teams by recruiting and training</p>
-                <img alt="group img" loading="lazy" width="802" height="782" decoding="async" data-nimg="1" class="p-24 " src="Group 710.png" style="color: transparent;">
-            </section>
-        </li>
-        <li class="flex flex-col gap-10 h-full py-10 md:py-28 bg-white lg:rounded-tl-3xl">
-            <div class="flex gap-12 w-full px-6 lg:px-16 mb-20">
-                <a class="pt-11 hidden md:block" href=".">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="rounded-full w-8 h-8 text-white mt-2 cursor-pointer" style="background-color: rgb(26, 24, 62);">
-                        <path d="m15 18-6-6 6-6"></path>
-                    </svg>
-                </a>
-                <div class="flex flex-col gap-4">
-                   
-                    <h1 class="text-4xl font-bold" style="color: rgb(26, 24, 62);">Do fill the form</h1>
-                    <form class="flex flex-col gap-8" data-gtm-form-interact-id="0">
-                        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdeSe0WUKPHJnsjbjXw31IAzV84rxRMZd-rB-zagVf6BdwKLA/viewform?embedded=true" width="640" height="600" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-                    </form>
-                </div>
-            </div>
-        </li>
-    </ul>
+<main class="w-full">
+<ngx-extended-pdf-viewer src="Phishing Training.pdf">
+</ngx-extended-pdf-viewer>
+
+    <button type="submit" class="flex p-3 rounded-md text-xsm text-white" style="margin: 10px auto; background-color: rgb(243, 5, 248);">
+        <span *ngIf="!loading">Completed</span>
+        <span *ngIf="loading">Saving...</span>
+    </button>
+    <p>{{this.email}}</p>
 </main>
