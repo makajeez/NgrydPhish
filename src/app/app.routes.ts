@@ -18,6 +18,6 @@ export const routes: Routes = [
         path: 'login/forgot-password', component: ForgotPasswordComponent
     },
     {
-        path: 'gf-embed', component: GfEmbedComponent
-    },
+        path: 'learn', component: GfEmbedComponent
+    }
 ];
